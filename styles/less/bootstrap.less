@@ -1,0 +1,348 @@
+/*!
+ * Bootstrap @VERSION
+ *
+ * Copyright 2011 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ * Date: @DATE
+ */
+
+// CSS Reset
+@import "reset.less";
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+// Grid system and page structure
+@import "scaffolding.less";
+
+// Styled patterns and elements
+@import "type.less";
+@import "forms.less";
+@import "tables.less";
+@import "patterns.less";
+
+// ----------------------------------------
+//
+//    Theme name:        Social contest 
+//    Theme author:      @DaleAnthony
+//    Theme website:     simpleweb.co.uk
+//
+// ----------------------------------------
+
+    // Colour overrides
+    @baseColor:       #37A;
+    @neutral:         #EFEFEF;
+    @complement:      @triad1;
+
+    // Tasty fonts
+    @basefont:          13px;
+    @baseline:          16px;
+    
+    @font-face {
+        font-family: 'Droid';
+        src: url('/styles/fonts/DroidSans.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    @font-face {
+        font-family: 'Arvo';
+        src: url('/styles/fonts/Arvo-Bold.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    
+    html { background: transparent; }
+    body { font-family: 'Droid'; background: @neutral; }
+    
+    h1, h2, h3, h4, h5 { font-weight: normal; }
+    h1 {  }
+    h2 {  }
+    h3 { font-size: 14px; line-height: 18px; }
+    
+    header {
+        min-height: 58px;
+        position: relative;
+        background: @baseColor;
+        margin: 0 0 20px 0;    padding: 0; 
+        .container { position: relative; background: url(../../img/headbgx.png) right -10px no-repeat; }
+        h1 { width: 500px; font-family: 'Arvo'; font-size: 40px; color: @white; margin: 50px 0 50px 0; line-height: 45px;
+        a { color: @white;
+        &:hover { color: @white; text-decoration: none; }}}
+    }
+    
+    .media-grid { float: left; position: relative;
+            li { float: left; position: relative; }
+            
+            
+       a {
+           border: none;
+           margin: 0; padding: 0;
+           background-color: transparent;
+           border: none;
+           .border-radius(0);
+           .box-shadow(0);
+       }
+        
+        .entry {
+          float: left;
+          position: relative;
+          padding: 4px;
+          margin: 0 0 20px 20px;
+          border: 1px solid #ddd;
+          .border-radius(4px);
+          .box-shadow(0 1px 1px rgba(0,0,0,.075));
+          background: @white;
+          img {
+            display: block;
+          }
+          &:hover {
+            border-color: lighten(@complement, 15%);
+            .box-shadow(0 1px 4px rgba(0,105,214,.25));
+          }}
+          
+          
+          
+          .meta {
+                  h3 {
+                      a {
+                          width:  200px;
+                          position: absolute;
+                          display: block;
+                          bottom: 4px;
+                          left: 4px;
+                          background: #666\9;
+                          background: rgba(000,000,000,.5);
+                          margin: 0;
+                          border: none;
+                          border-radius: (0px);
+                          padding: 5px;
+                          color: @white;
+                          text-decoration: none;
+                      }
+                  }
+                  .like-count {
+                      position: absolute;
+                      right: -2px;
+                      top: 12px;
+                      padding: 4px 7px 4px 12px;
+                      background: @complement;
+                      border-right: 2px solid darken(@complement, 10%);
+                      box-shadow: (1px 0 2px rgba(000,000,000,.6));
+                      color: @white;
+                      a { color: @white; }
+                  }
+          }
+            
+    }
+    
+    .widget {
+        width:  180px;
+        float: left;
+        position: relative;
+      background-color: #f5f5f5;
+      margin-bottom: 20px;
+      padding: 19px;
+      min-height: 20px;
+      border: 1px solid darken(@neutral, 7%);
+      box-shadow: 0 1px 0 rgba(255,255,255,.5);
+      .border-radius(4px);
+      
+          h3 { width: 180px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 15px -18px; padding: 10px 18px 10px 18px; color: @white; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;
+           }
+      
+          &.popular {
+              ul { margin: 0; padding: 0; list-style-type: none;
+              li { float: left; position: relative; margin: 0 8px 8px 0; padding: 3px; border: 1px solid #ddd; .border-radius(4px); .box-shadow(0 1px 1px rgba(0,0,0,.075)); background: @white; 
+                  &.alt { margin: 0 0 8px 0; }
+                  &:hover { border-color: lighten(@complement, 15%); .box-shadow(0 1px 4px rgba(0,105,214,.25)); }
+                  img { display: block; }}}
+          }
+      
+      }
+      
+      .photo {
+          float: left;
+          position: relative;
+          padding: 4px;
+          margin: 0;
+          border: 1px solid #ddd;
+          .border-radius(4px);
+          .box-shadow(0 1px 1px rgba(0,0,0,.075));
+          background: @white;
+      }
+      
+
+    .comments {
+        float: left;     position: relative;     clear: left;
+        margin: 20px 0 20px 0;    padding: 19px;
+        background-color: #f5f5f5;
+        border: 1px solid darken(@neutral, 7%);
+        box-shadow: 0 1px 0 rgba(255,255,255,.5);
+        .border-radius(4px);
+        
+        h3 { width: 100%; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @white; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+        
+        .btn.add-comment { position: absolute; top: 6px; right: 15px; }
+        ol { 
+            width: 660px; margin: 0; padding: 0; list-style-type: none;
+            li { width: 100%; float: left; position: relative; margin: 15px 0 0 0; padding: 0 0 15px 0; clear: left; border-bottom: 1px dotted darken(@neutral, 15%); }
+            .meta { float: left; position: relative; margin: 5px 0 0 10px; background: transparent; }
+            .avatar { float: left; position: relative; margin: 0 20px 0 0; }
+            .author { margin: 0; }
+            .comment { width: 500px; float: left; position: relative; margin: 15px 0 0 0; padding: 0 0 0 10px; border-left: 2px solid darken(@neutral, 15%); }
+            .last { border-bottom: none; }
+        }
+    }
+    
+.actions-menu { float: left; position: relative; clear: left; width: 100%; margin: 0 0 1px 0; border: 1px solid darken(@neutral, 25%); .border-radius(4px); background: darken(@neutral, 25%); #gradient > .vertical(darken(@neutral, 15%), darken(@neutral, 25%)); list-style-type: none; .box-shadow(0 1px 0 rgba(255,255,255,.5));
+    li { float: left; position: relative;
+        a { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);
+            &:hover { text-decoration: none; #gradient > .vertical(@neutral, darken(@neutral, 40%)); }
+            &.inactive { background: #CCC; color: #EEE; }
+            &.like { width: 94px; background-image: url(../../img/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.comment { width: 94px; background-image: url(../../img/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.facebook { background-image: url(../../img/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.twitter { background-image: url(../../img/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
+        &.alt a { border-right: none; }
+        }
+}
+    
+    
+    .auth { clear: left; list-style-type: none; margin: 0; padding: 0;
+        li { float: left; position: relative; clear: left; margin: 0 0 4px 0; padding: 0;
+            a { float: left; position: relative; display: block; padding: 6px 10px 4px 32px; .border-radius(3px); color: @white; .box-shadow(inset 0 1px 0 rgba(255,255,255,.2));
+                &:hover { text-decoration: none; } 
+                span { position: absolute; top: 3px; left: 5px; width: 21px; height: 21px; background: url(../../img/shapes.png);  }}
+            &.twitter a { background: #3B9FCE; #gradient > .vertical(#3B9FCE, #3183AA); border: 1px solid #2A779B; border-bottom: 2px solid #2A779B;
+                &:hover { background: #62B2D7; #gradient > .vertical(#62B2D7, #3183AA); }
+                span { background-position: 0; }}
+            &.facebook a { background: #7086B6; #gradient > .vertical(#7086B6, #4865A1); border: 1px solid #314D8C; border-bottom: 2px solid #314D8C; 
+                &:hover { background: #8C9EC4; #gradient > .vertical(#8C9EC4, #4865A1); }
+                span { background-position: 20px; }}}
+    }
+        
+    h4.login { margin: 0 0 10px 0; padding: 0; font-size: 13px; line-height: 16px; font-weight: bold; color: @complement; }    
+    
+    #user-block { float: left; position: relative; clear: left; margin: 10px 0 15px 0; padding: 0 0 15px 0; border-bottom: 2px solid darken(@neutral, 10%);
+        .logged-in { width: 100px; float: left; position: relative; margin: 0 0 5px 0; } 
+        .avatar { float: left; position: relative; margin: 0 10px 0 0; }
+        .add { display: block; text-align: center; margin-top: 15px; }
+        }
+        
+        
+    #comments-form { 
+        width: 100%;
+        float: left; position: relative;
+        border-bottom: 1px solid darken(@neutral, 5%);
+        
+            .alert-message { float: left; position: relative; padding: 5px 10px 2px 10px; text-shadow: none; }
+            textarea { float: left; position: relative; clear: left; width: 650px; height: 60px; }
+            .btn { float: right; position: relative; clear: left; margin: 10px 0 5px 0; }
+            .auth { float: right; position: relative; clear: none; margin: 0 0 0 10px;
+                li { float: left; position: relative; clear: none; margin: 0 5px 10px 0; }}
+            .logged-out { width: 660px;
+                p { float: left; position: relative; margin: 7px 0 0 0; }}
+    }
+    
+    .more {
+        width: 680px;
+        float: left; position: relative;
+        text-align: center;
+        padding: 15px 10px;
+        background: transparent;
+        border: none;
+        border-top: 1px dotted darken(@neutral, 10%);
+    }
+    
+    #entry-meta {
+        width: 100%; float:  left; position: relative; margin: 0 0 10px 0; padding: 5px 0 5px 0; border-top: 1px dotted darken(@neutral, 15%); border-bottom: 1px dotted darken(@neutral, 15%);
+        img.avatar { float: left; position: relative; margin: 0 8px 0 0; }
+        .author { float: left; position: relative; margin: 5px 0 0 0; color: darken(@neutral, 40%); } 
+    }
+    
+    #entry-detail {
+        width: 100%;
+        float:  left;
+        position: relative;
+        clear: left;
+    }
+    
+    #new-entry {
+        .clearfix { margin: 0 0 10px 0; }
+        label { margin: 0 20px 0 0; }
+    }
+    
+    #share-space { position: absolute; top: 0; right: 0; background: rgba(000,000,000,.3); padding: 7px 12px 5px 12px; .box-shadow(0 1px 0 rgba(255,255,255,.2)); -webkit-border-bottom-right-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-radius-bottomright: 3px; -moz-border-radius-bottomleft: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;
+        .share-text { float: left; position: relative; margin: 3px 15px 0 0; color: @white; }
+        .buttons { float: left; position: relative; list-style-type: none; margin: 0;
+            li { float: left; position: relative; margin: 0; padding: 0; border: none; }
+        }
+    }
+    
+    
+    #t7_timer {
+      position: absolute;
+      right: 0;
+      top: 60px;
+      background-color: #1a1d24;
+      background-image: -moz-linear-gradient(top, #2b303b, #1a1d24);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2b303b), color-stop(1, #1a1d24));
+      padding: 10px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      -webkit-box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.9);
+      -moz-box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.9);
+      box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.9); }
+      #t7_timer #t7_vals .t7_numbs {
+        position: relative;
+        float: left;
+        letter-spacing: 4px;
+        font-size: 30px;
+        line-height: 40px;
+        padding: 0 5px 0 10px;
+        background: black;
+        color: #dddddd;
+        font-family: monospace;
+        margin-right: 3px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+        -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+        background-image: -moz-linear-gradient(top, #383838, black);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #383838), color-stop(1, black));
+        text-shadow: 0 -1px 1px black; }
+        #t7_timer #t7_vals .t7_numbs span {
+          width: 100%;
+          height: 2px;
+          top: 19px;
+          left: 0;
+          position: absolute;
+          background: #111111;
+          border-top: 1px solid rgba(0, 0, 0, 0.6);
+          height: 1px; }
+    
+    header #t7_timer {
+      padding: 0;
+      background: transparent;
+      -moz-border-radius: 0;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      margin-top: -5px;
+      margin-right: -5px; }
+      
+      .btn {
+          #gradient > .vertical-three-colors(#ffffff, #ffffff, 25%, darken(#ffffff, 10%));
+          &.primary { #gradient > .vertical-three-colors(@complement, @complement, 25%, darken(@complement, 10%)); }
+      }
