@@ -74,7 +74,7 @@
     }
     
     .media-grid { float: left; position: relative;
-            li { float: left; position: relative; }
+            li { float: left; position: relative; *margin-bottom: 20px; }
             
             
     a {
@@ -177,13 +177,13 @@
 
     .comments {
         float: left;     position: relative;     clear: left;
-        margin: 20px 0 20px 0;    padding: 19px;
+        margin: 20px 0 20px 0;    padding: 19px; *padding: 19px 1px 19px 19px;
         background-color: #f5f5f5;
         border: 1px solid darken(@neutral, 7%);
         box-shadow: 0 1px 0 rgba(255,255,255,.5);
         .border-radius(4px);
         
-        h3 { width: 100%; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @white; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+        h3 { width: 100%; *width: 679px; *margin-right: 1px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @white; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
         
         .btn.add-comment { position: absolute; top: 6px; right: 15px; }
         ol {
@@ -286,6 +286,7 @@
     // Countdown timer
     
     #t7_timer {
+    width: 270px;
     position: absolute;
     right: 0;
     top: 60px;
