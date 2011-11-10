@@ -1,0 +1,20 @@
+{% if rusic.ideas != empty %}
+        <!-- Entries -->
+        <div class="span12">
+        
+            <h3 class="description">{{rusic.summary}}</h3>
+        
+            <ul class="media-grid">
+                {% paginate rusic.ideas by 15 %}
+  	            {% for idea in paginate %}
+                <li><div class="entry"><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.medium_square}}" alt="Image for {{idea.title}}" class="thumbnail" /></a><div class="meta"><h3><a href="/entry.html">{{idea.title | truncate: 62}}</a></h3><span class="like-count">{{idea.likes}} likes</span></div></div></li>
+                {% endfor %}
+  		        {% endpaginate %}
+            </ul>
+            
+            <div class="more">
+                <a href="#" title="#" class="btn primary large">show more entries</a>
+            </div>
+            
+        </div>
+{% endif %}

@@ -1,29 +1,4 @@
-/*!
-* Bootstrap @VERSION
-*
-* Copyright 2011 Twitter, Inc
-* Licensed under the Apache License v2.0
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Designed and built with all the love in the world @twitter by @mdo and @fat.
-* Date: @DATE
-*/
-
-// CSS Reset
-@import "reset.less";
-
-// Core variables and mixins
-@import "variables.less"; // Modify this for custom colors, font-sizes, etc
-@import "mixins.less";
-
-// Grid system and page structure
-@import "scaffolding.less";
-
-// Styled patterns and elements
-@import "type.less";
-@import "forms.less";
-@import "tables.less";
-@import "patterns.less";
+@import "less/bootstrap.less";
 
 // ----------------------------------------
 //
@@ -34,9 +9,9 @@
 // ----------------------------------------
 
     // Colour overrides
-    @baseColor:       #37A;
-    @neutral:         #EFEFEF;
-    @complement:      @triad1;
+    @baseColor:           #37A;
+    @neutral:                 #EFEFEF;
+
 
     // Tasty fonts
     @basefont:          13px;
@@ -44,14 +19,14 @@
     
     @font-face {
         font-family: 'Droid';
-        src: url('/styles/fonts/DroidSans.ttf') format('truetype');
+        src: url('/stylesheets/fonts/DroidSans.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
     
     @font-face {
         font-family: 'Arvo';
-        src: url('/styles/fonts/Arvo-Bold.ttf') format('truetype');
+        src: url('/stylesheets/fonts/Arvo-Bold.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
@@ -67,10 +42,10 @@
     h3 { font-size: 14px; line-height: 18px; }
     
     header { min-height: 58px; position: relative; background: @baseColor; margin: 0 0 20px 0; padding: 0;
-        .container { position: relative; background: url(../../img/headbgx.png) right -10px no-repeat; }
-        h1 { width: 500px; font-family: 'Arvo'; font-size: 40px; color: @white; margin: 50px 0 50px 0; line-height: 45px;
-        a { color: @white;
-        &:hover { color: @white; text-decoration: none; }}}
+        .container { position: relative; background: url(/images/headbgx.png) right -10px no-repeat; }
+        h1 { width: 500px; font-family: 'Arvo'; font-size: 40px; color: @neutral; margin: 50px 0 50px 0; line-height: 45px;
+        a { color: @neutral;
+        &:hover { color: @neutral; text-decoration: none; }}}
     }
     
     .media-grid { float: left; position: relative;
@@ -94,7 +69,7 @@
         border: 1px solid #ddd;
         .border-radius(4px);
         .box-shadow(0 1px 1px rgba(0,0,0,.075));
-        background: @white;
+        background: @neutral;
         img {
             display: block;
         }
@@ -102,6 +77,10 @@
             border-color: lighten(@complement, 15%);
             .box-shadow(0 1px 4px rgba(0,105,214,.25));
         }}
+        img.thumbnail {
+            width: 210px;
+            height: 210px;
+        }
         
         
         
@@ -114,12 +93,12 @@
                         bottom: 4px;
                         left: 4px;
                         background: #666\9;
-                        background: rgba(000,000,000,.5);
+                        background: rgba(000,000,000,.7);
                         margin: 0;
                         border: none;
                         border-radius: (0px);
                         padding: 5px;
-                        color: @white;
+                        color: @neutral;
                         text-decoration: none;
                     }
                 }
@@ -131,8 +110,8 @@
                     background: @complement;
                     border-right: 2px solid darken(@complement, 10%);
                     box-shadow: (1px 0 2px rgba(000,000,000,.6));
-                    color: @white;
-                    a { color: @white; }
+                    color: @neutral;
+                    a { color: @neutral; }
                 }
         }
             
@@ -150,15 +129,16 @@
     box-shadow: 0 1px 0 rgba(255,255,255,.5);
     .border-radius(4px);
     
-        h3 { width: 180px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 15px -18px; padding: 10px 18px 10px 18px; color: @white; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;
+        h3 { width: 180px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(@baseColor, darken(@baseColor, 20%)); margin: -18px 0 15px -18px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;
         }
     
         &.popular {
             ul { margin: 0; padding: 0; list-style-type: none;
-            li { float: left; position: relative; margin: 0 8px 8px 0; padding: 3px; border: 1px solid #ddd; .border-radius(4px); .box-shadow(0 1px 1px rgba(0,0,0,.075)); background: @white;
+            li { float: left; position: relative; margin: 0 8px 8px 0; padding: 3px; border: 1px solid #ddd; .border-radius(4px); .box-shadow(0 1px 1px rgba(0,0,0,.075)); background: @neutral;
                 &.alt { margin: 0 0 8px 0; }
                 &:hover { border-color: lighten(@complement, 15%); .box-shadow(0 1px 4px rgba(0,105,214,.25)); }
-                img { display: block; }}}
+                img { display: block; 
+                &.thumbnail { width: 78px; height: 78px; }}}}
         }
     
     }
@@ -171,7 +151,7 @@
         border: 1px solid #ddd;
         .border-radius(4px);
         .box-shadow(0 1px 1px rgba(0,0,0,.075));
-        background: @white;
+        background: @neutral;
     }
     
 
@@ -183,14 +163,14 @@
         box-shadow: 0 1px 0 rgba(255,255,255,.5);
         .border-radius(4px);
         
-        h3 { width: 100%; *width: 679px; *margin-right: 1px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @white; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+        h3 { width: 100%; *width: 679px; *margin-right: 1px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
         
         .btn.add-comment { position: absolute; top: 6px; right: 15px; }
         ol {
-            width: 660px; margin: 0; padding: 0; list-style-type: none;
+            width: 680px; margin: 0; padding: 0; list-style-type: none;
             li { width: 100%; float: left; position: relative; margin: 15px 0 0 0; padding: 0 0 15px 0; clear: left; border-bottom: 1px dotted darken(@neutral, 15%); }
             .meta { float: left; position: relative; margin: 5px 0 0 10px; background: transparent; }
-            .avatar { float: left; position: relative; margin: 0 20px 0 0; }
+            .avatar { float: left; position: relative; margin: 0 20px 0 0; width: 80px; height: 80px; }
             .author { margin: 0; }
             .comment { width: 500px; float: left; position: relative; margin: 15px 0 0 0; padding: 0 0 0 10px; border-left: 2px solid darken(@neutral, 15%); }
             .last { border-bottom: none; }
@@ -199,13 +179,13 @@
     
 .actions-menu { float: left; position: relative; clear: left; width: 100%; margin: 0 0 1px 0; border: 1px solid darken(@neutral, 25%); .border-radius(4px); background: darken(@neutral, 25%); #gradient > .vertical(darken(@neutral, 15%), darken(@neutral, 25%)); list-style-type: none; .box-shadow(0 1px 0 rgba(255,255,255,.5));
     li { float: left; position: relative;
-        a { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);
+        a { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @neutral; text-shadow: 0 1px 0 rgba(000,000,000,.5);
             &:hover { text-decoration: none; #gradient > .vertical(@neutral, darken(@neutral, 40%)); }
             &.inactive { background: #CCC; color: #EEE; }
-            &.like { width: 94px; background-image: url(../../img/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.comment { width: 94px; background-image: url(../../img/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.facebook { background-image: url(../../img/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.twitter { background-image: url(../../img/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
+            &.like { width: 94px; background-image: url(/images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.comment { width: 94px; background-image: url(/images/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.facebook { background-image: url(/images/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.twitter { background-image: url(/images/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
         &.alt a { border-right: none; }
         }
 }
@@ -213,9 +193,9 @@
     
     .auth { clear: left; list-style-type: none; margin: 0; padding: 0;
         li { float: left; position: relative; clear: left; margin: 0 0 4px 0; padding: 0;
-            a { float: left; position: relative; display: block; padding: 6px 10px 4px 32px; .border-radius(3px); color: @white; .box-shadow(inset 0 1px 0 rgba(255,255,255,.2));
+            a { float: left; position: relative; display: block; padding: 6px 10px 4px 32px; .border-radius(3px); color: @neutral; .box-shadow(inset 0 1px 0 rgba(255,255,255,.2));
                 &:hover { text-decoration: none; }
-                span { position: absolute; top: 3px; left: 5px; width: 21px; height: 21px; background: url(../../img/shapes.png);  }}
+                span { position: absolute; top: 3px; left: 5px; width: 21px; height: 21px; background: url(/images/shapes.png);  }}
             &.twitter a { background: #3B9FCE; #gradient > .vertical(#3B9FCE, #3183AA); border: 1px solid #2A779B; border-bottom: 2px solid #2A779B;
                 &:hover { background: #62B2D7; #gradient > .vertical(#62B2D7, #3183AA); }
                 span { background-position: 0; }}
@@ -228,8 +208,8 @@
     
     #user-block { float: left; position: relative; clear: left; margin: 10px 0 15px 0; padding: 0 0 15px 0; border-bottom: 2px solid darken(@neutral, 10%);
         .logged-in { width: 100px; float: left; position: relative; margin: 0 0 5px 0; }
-        .avatar { float: left; position: relative; margin: 0 10px 0 0; }
-        .add { display: block; text-align: center; margin-top: 15px; }
+        .avatar { float: left; position: relative; margin: 0 10px 0 0; width: 65px; height: 65px; }
+        .add { display: block; clear: left; text-align: center; margin-top: 15px; margin-bottom: 8px; }
         }
         
         
@@ -268,15 +248,16 @@
         float:  left;
         position: relative;
         clear: left;
+        margin-bottom: 10px;
     }
     
-    #new-entry {
+    #new-entry { 
         .clearfix { margin: 0 0 10px 0; }
         label { margin: 0 20px 0 0; }
     }
     
     #share-space { position: absolute; top: 0; right: 0; background: rgba(000,000,000,.3); padding: 7px 12px 5px 12px; .box-shadow(0 1px 0 rgba(255,255,255,.2)); -webkit-border-bottom-right-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-radius-bottomright: 3px; -moz-border-radius-bottomleft: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;
-        .share-text { float: left; position: relative; margin: 3px 15px 0 0; color: @white; }
+        .share-text { float: left; position: relative; margin: 3px 15px 0 0; color: @neutral; }
         .buttons { float: left; position: relative; list-style-type: none; margin: 0;
             li { float: left; position: relative; margin: 0; padding: 0; border: none; }
         }
@@ -381,7 +362,7 @@
 
 
 .alert-message.tip { width: 158px; float: left; position: relative; margin-bottom: 6px; padding: 8px 10px 8px 10px; z-index: 999; .close { color: #000; }
-    i { width: 17px; height: 10px; background: url(../../img/alert-point.png) no-repeat; display: block; position: absolute; left: 8px; bottom: -10px; }}
+    i { width: 17px; height: 10px; background: url(/images/alert-point.png) no-repeat; display: block; position: absolute; left: 8px; bottom: -10px; }}
 .alert-message.tip p { font-size: 12px; line-height: 14px; color: @gray; }
 
 .widget.share .buttons {
@@ -390,10 +371,62 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    li { float: left; position: relative; }
+    li { float: left; position: relative; 
+        &.twitter { width: 105px; }
+        &.facebook { width: 75px; }}
 }
 
 .widget.share .actions-menu {
     li { a {
     width: 136px; border-right: none; border-bottom: 1px solid darken(@neutral, 25%); }}
+}
+
+
+.photo {
+    width: 380px;
+}
+
+form {
+    .input { margin-left: 0; }
+}
+
+#comments-form {
+    .checkarea { float: left; position: relative; clear: left; margin-top: 10px; }
+    .btn { float: right; position: relative; margin: 8px 0 15px 0; }
+}
+
+#new-entry {
+    width: 658px;
+    float: left;
+    position: relative;
+    margin: 0 0 20px 20px;
+    padding: 20px 20px 0 20px;
+    .border-radius(3px);
+    background: lighten(@neutral, 3%);
+    border: 1px solid darken(@neutral, 7%);
+    border-bottom: 2px solid darken(@neutral, 20%);
+    box-shadow: 0 1px 0 rgba(255,255,255,.5);
+    form { float: left; position: relative; }
+    input { margin-bottom: 10px; }
+    
+            h3 { width: 660px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(@baseColor, darken(@baseColor, 20%)); margin: -19px 0 15px -19px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;
+        }
+        
+        fieldset { margin: 0; padding: 0; }
+    
+}
+
+.container {
+    position: relative;
+}
+
+#entry_form {
+    textarea { width: 450px; margin-bottom: 10px; }
+    #idea_images_attributes_0_file { width: 460px; }
+    .btn.submit { position: absolute; top: 10px; right: 0; }
+    .submit-group { width: 570px; float: left; position: relative; clear: left; margin: 8px 0 10px 40px; padding-top: 15px; border-top: 1px solid darken(@neutral, 5%);}
+}
+
+footer {
+    padding-bottom: 20px;
 }

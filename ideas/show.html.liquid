@@ -1,0 +1,60 @@
+<div class="span12">
+
+    <img src="{{idea.images.first.medium_large}}" alt="#" class="photo" />
+    
+    <div class="span5">
+        <h1>{{idea.title}}</h1>
+        <div id="entry-meta"><img src="{{idea.user.image_url}}" alt="avatar for {{%idea.user%}}" width="25" height="25" class="avatar" /><span class="author">by <a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{idea.user.nickname}}</a></span></div>
+        <div id="entry-detail"><p>{{idea.content | markdown}}</p></div>
+        
+        <ul class="actions-menu">
+            <li><a href="{{idea.like_link}}" data-method="post" class="like">like this entry</a></li>
+            <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ add comment</a></li>
+        </ul>
+        
+    <!--
+        <ul class="actions-menu">
+            <li><a href="#" title="#" class="facebook">like on facebook</a></li>
+            <li class="alt"><a href="#" title="#" class="twitter">share on twitter</a></li>
+        </ul>
+    -->
+
+    </div>
+    
+    <div class="comments" class="span12">
+        <h3>Comments</h3>
+        
+        <div id="comments-form">
+        {% if current_user %}
+        <form action="{{idea.permalink}}/comments" method="post" charset="utf-8">
+            <div class="input"><textarea id="comment_body" name="comment[body]"></textarea></div>
+            <input type="submit" name="submit" value="post comment" class="btn primary" />
+            <div class="checkarea"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this comment to {{current_user.provider}}?</div>
+        </form>
+        {% else %}
+        <div class="alert-message block-message warning">
+            <div class="logged-out">
+                <ul class="auth">
+                    <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
+                    <li class="facebook"><a href="/auth/facebook" class="button"><span></span>Facebook</a></li>
+                </ul>
+                <p><strong>to add a comment, like or add a new entry login with:</strong></p>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+        
+        {% if idea.comments != empty %}
+        <ol>
+            {% for comment in idea.comments %}
+            <li><img src="{{comment.user.image_url}}" alt="avatar for {{%comment.user.name%}}" class="avatar" /><div class="author">{{comment.created_at | date: "%b %m %Y"}} <strong><strong><a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{comment.user.nickname}}</a></strong></strong> said...</div><div class="comment">{{comment.body | markdown}}</p></div></li>
+            {% endfor %}
+        <ol>
+        {% else %}
+        <ol>
+            <li><p>Nobody has commented here yet, maybe you could be the first?</p></li>
+        </ol>
+        {% endif %}
+    </div>
+    
+</div>
