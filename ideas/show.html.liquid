@@ -5,11 +5,11 @@
     <div class="span5">
         <h1>{{idea.title}}</h1>
         <div id="entry-meta"><img src="{{idea.user.image_url}}" alt="avatar for {{%idea.user%}}" width="25" height="25" class="avatar" /><span class="author">by <a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{idea.user.nickname}}</a></span></div>
-        <div id="entry-detail"><p>{{idea.content | markdown}}</p></div>
+        <div id="entry-detail">{{idea.content | markdown}}</div>
         
         <ul class="actions-menu">
-            <li><a href="{{idea.like_link}}" data-method="post" class="like">like this entry</a></li>
-            <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ add comment</a></li>
+            <li><a href="{{idea.like_link}}" data-method="post" class="like">Like this entry</a></li>
+            <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ Add comment</a></li>
         </ul>
         
     <!--
@@ -21,15 +21,15 @@
 
     </div>
     
-    <div class="comments" class="span12">
+    <div class="comments span12">
         <h3>Comments</h3>
         
         <div id="comments-form">
         {% if current_user %}
         <form action="{{idea.permalink}}/comments" method="post" charset="utf-8">
             <div class="input"><textarea id="comment_body" name="comment[body]"></textarea></div>
-            <input type="submit" name="submit" value="post comment" class="btn primary" />
-            <div class="checkarea"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this comment to {{current_user.provider}}?</div>
+            <input type="submit" name="submit" value="Submit comment" class="btn primary submit" />
+            <div class="checkarea share"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this comment to {{current_user.provider}}?</div>
         </form>
         {% else %}
         <div class="alert-message block-message warning">
@@ -47,9 +47,9 @@
         {% if idea.comments != empty %}
         <ol>
             {% for comment in idea.comments %}
-            <li><img src="{{comment.user.image_url}}" alt="avatar for {{%comment.user.name%}}" class="avatar" /><div class="author">{{comment.created_at | date: "%b %m %Y"}} <strong><strong><a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{comment.user.nickname}}</a></strong></strong> said...</div><div class="comment">{{comment.body | markdown}}</p></div></li>
+            <li><img src="{{comment.user.image_url}}" alt="avatar for {{%comment.user.name%}}" class="avatar" /><div class="author">{{comment.created_at | date: "%b %m %Y"}} <strong><strong><a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{comment.user.nickname}}</a></strong></strong> said...</div><div class="comment">{{comment.body | markdown}}</div></li>
             {% endfor %}
-        <ol>
+        </ol>
         {% else %}
         <ol>
             <li><p>Nobody has commented here yet, maybe you could be the first?</p></li>

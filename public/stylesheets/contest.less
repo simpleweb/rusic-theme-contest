@@ -41,7 +41,7 @@
     h2 {  }
     h3 { font-size: 14px; line-height: 18px; }
     
-    header { min-height: 58px; position: relative; background: @baseColor; margin: 0 0 20px 0; padding: 0;
+    #header { min-height: 58px; position: relative; background: @baseColor; margin: 0 0 20px 0; padding: 0;
         .container { position: relative; background: url(/images/headbgx.png) right -10px no-repeat; }
         h1 { width: 500px; font-family: 'Arvo'; font-size: 40px; color: @neutral; margin: 50px 0 50px 0; line-height: 45px;
         a { color: @neutral;
@@ -311,7 +311,7 @@
         border-top: 1px solid rgba(0, 0, 0, 0.6);
         height: 1px; }
     
-    header #t7_timer {
+    #header #t7_timer {
     padding: 10px;
     background: darken(@baseColor, 10%);
     -moz-border-radius: 0;
@@ -393,6 +393,7 @@ form {
 #comments-form {
     .checkarea { float: left; position: relative; clear: left; margin-top: 10px; }
     .btn { float: right; position: relative; margin: 8px 0 15px 0; }
+    .submit { *margin-left: 560px; }
 }
 
 #new-entry {
@@ -429,4 +430,8 @@ form {
 
 footer {
     padding-bottom: 20px;
+}
+
+.checkarea.share {
+    *width: 500px;
 }
