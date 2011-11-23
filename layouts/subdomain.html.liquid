@@ -1,4 +1,8 @@
-{% assign asset_url="http://localhost:8080" %}
+{% if env == "development" %}
+  {% assign asset_url="http://localhost:8080" %}
+{% else %}
+  {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
+{% endif %}
 <!doctype html>
     <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
     <!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
@@ -22,14 +26,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet/less" href="/stylesheets/contest.less">
-    <script src="/javascripts/less.js"></script>
+    <link rel="stylesheet" href="{{asset_url}}/stylesheets/contest.css">
 
     <!-- Scripts -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     {{ content_for_header }}
     <script src="/assets/jquery.countdown.min.js"></script>
-    <script src="/javascripts/scripts.js"></script>
+    <script src="{{asset_url}}/javascripts/scripts.js"></script>
 
     <!-- Fav & touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -47,8 +50,12 @@
             <h1><a href="{{space.permalink}}" title="link to Social Space">My social contest space</a></h1>
 
             <!-- THIS NEEDS TO BE REPLACED WITH THE NEW COUNTDOWN -->
-            <div data-expires_at="2011-08-27T15:10:00Z" id="timer" class="hasCountdown"><div id="t7_timer"><span class="countdown-text">Contest closes in:</span><div id="t7_vals"><div id="t7_d" class="t7_numbs">000<span></span></div><div id="t7_h" class="t7_numbs">00<span></span></div><div id="t7_m" class="t7_numbs">00<span></span></div><div id="t7_s" class="t7_numbs">00<span></span></div></div></div></div>
-
+            {% if space.expires_at %}
+              <div id="timer">
+                <span class="countdown-text">Contest closes in:</span>
+                <time id="expires-at" datetime="{{space.expires_at}}">{{space.expires_at}}</time>
+              </div>
+            {% endif %}
         </div>
     </header>
 
@@ -82,7 +89,7 @@
                 <div id="user-block">
                     <img src="{{current_user.image_url}}" title="Your avatar from {{user.provider}}" class="avatar" />
                     <span class="logged-in">Welcome back<br /> <strong>{{current_user.nickname}}</strong></span>
-                    <a href="/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
+                    <a href="/auth/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
                     <a href="#" title="#" class="btn primary add  showbtn">+ Add new entry</a>
                 </div>
                 {% if idea %}
