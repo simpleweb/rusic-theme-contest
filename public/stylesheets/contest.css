@@ -2363,13 +2363,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 @font-face {
   font-family: 'Droid';
-  src: url('/stylesheets/fonts/DroidSans.ttf') format('truetype');
+  src: url('fonts/DroidSans.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Arvo';
-  src: url('/stylesheets/fonts/Arvo-Bold.ttf') format('truetype');
+  src: url('fonts/Arvo-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -2400,7 +2400,7 @@ h3 {
 }
 #header .container {
   position: relative;
-  background: url(/images/headbgx.png) right -10px no-repeat;
+  background: url(../images/headbgx.png) right -10px no-repeat;
 }
 #header h1 {
   width: 500px;
@@ -2730,23 +2730,23 @@ h3 {
 }
 .actions-menu li a.like {
   width: 94px;
-  background-image: url(/images/share-heart.png);
+  background-image: url(../images/share-heart.png);
   background-repeat: no-repeat;
   background-position: 7px 8px;
 }
 .actions-menu li a.comment {
   width: 94px;
-  background-image: url(/images/share-comment.png);
+  background-image: url(../images/share-comment.png);
   background-repeat: no-repeat;
   background-position: 7px 8px;
 }
 .actions-menu li a.facebook {
-  background-image: url(/images/share-facebook.png);
+  background-image: url(../images/share-facebook.png);
   background-repeat: no-repeat;
   background-position: 7px 8px;
 }
 .actions-menu li a.twitter {
-  background-image: url(/images/share-twitter.png);
+  background-image: url(../images/share-twitter.png);
   background-repeat: no-repeat;
   background-position: 7px 8px;
 }
@@ -2788,7 +2788,7 @@ h3 {
   left: 5px;
   width: 21px;
   height: 21px;
-  background: url(/images/shapes.png);
+  background: url(../images/shapes.png);
 }
 .auth li.twitter a {
   background: #3B9FCE;
@@ -3157,7 +3157,7 @@ h3.description {
 .alert-message.tip i {
   width: 17px;
   height: 10px;
-  background: url(/images/alert-point.png) no-repeat;
+  background: url(../images/alert-point.png) no-repeat;
   display: block;
   position: absolute;
   left: 8px;
