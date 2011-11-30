@@ -16,42 +16,42 @@
     // Tasty fonts
     @basefont:          13px;
     @baseline:          16px;
-    
+
     @font-face {
         font-family: 'Droid';
-        src: url('/stylesheets/fonts/DroidSans.ttf') format('truetype');
+        src: url('fonts/DroidSans.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
-    
+
     @font-face {
         font-family: 'Arvo';
-        src: url('/stylesheets/fonts/Arvo-Bold.ttf') format('truetype');
+        src: url('fonts/Arvo-Bold.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
-    
+
     // Global styles
-    
+
     html { background: transparent; }
     body { font-family: 'Droid'; background: @neutral; }
-    
+
     h1, h2, h3, h4, h5 { font-weight: normal; }
     h1 {  }
     h2 {  }
     h3 { font-size: 14px; line-height: 18px; }
-    
+
     #header { min-height: 58px; position: relative; background: @baseColor; margin: 0 0 20px 0; padding: 0;
-        .container { position: relative; background: url(/images/headbgx.png) right -10px no-repeat; }
+        .container { position: relative; background: url(../images/headbgx.png) right -10px no-repeat; }
         h1 { width: 500px; font-family: 'Arvo'; font-size: 40px; color: @neutral; margin: 50px 0 50px 0; line-height: 45px;
         a { color: @neutral;
         &:hover { color: @neutral; text-decoration: none; }}}
     }
-    
+
     .media-grid { float: left; position: relative;
             li { float: left; position: relative; *margin-bottom: 20px; }
-            
-            
+
+
     a {
         border: none;
         margin: 0; padding: 0;
@@ -60,7 +60,7 @@
         .border-radius(0);
         .box-shadow(0);
     }
-        
+
         .entry {
         float: left;
         position: relative;
@@ -81,9 +81,9 @@
             width: 210px;
             height: 210px;
         }
-        
-        
-        
+
+
+
         .meta {
                 h3 {
                     a {
@@ -114,9 +114,9 @@
                     a { color: @neutral; }
                 }
         }
-            
+
     }
-    
+
     .widget {
         width:  180px;
         float: left;
@@ -128,21 +128,21 @@
     border: 1px solid darken(@neutral, 7%);
     box-shadow: 0 1px 0 rgba(255,255,255,.5);
     .border-radius(4px);
-    
+
         h3 { width: 180px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(@baseColor, darken(@baseColor, 20%)); margin: -18px 0 15px -18px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;
         }
-    
+
         &.popular {
             ul { margin: 0; padding: 0; list-style-type: none;
             li { float: left; position: relative; margin: 0 8px 8px 0; padding: 3px; border: 1px solid #ddd; .border-radius(4px); .box-shadow(0 1px 1px rgba(0,0,0,.075)); background: @neutral;
                 &.alt { margin: 0 0 8px 0; }
                 &:hover { border-color: lighten(@complement, 15%); .box-shadow(0 1px 4px rgba(0,105,214,.25)); }
-                img { display: block; 
+                img { display: block;
                 &.thumbnail { width: 78px; height: 78px; }}}}
         }
-    
+
     }
-    
+
     .photo {
         float: left;
         position: relative;
@@ -153,7 +153,7 @@
         .box-shadow(0 1px 1px rgba(0,0,0,.075));
         background: @neutral;
     }
-    
+
 
     .comments {
         float: left;     position: relative;     clear: left;
@@ -162,9 +162,9 @@
         border: 1px solid darken(@neutral, 7%);
         box-shadow: 0 1px 0 rgba(255,255,255,.5);
         .border-radius(4px);
-        
+
         h3 { width: 100%; *width: 679px; *margin-right: 1px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
-        
+
         .btn.add-comment { position: absolute; top: 6px; right: 15px; }
         ol {
             width: 680px; margin: 0; padding: 0; list-style-type: none;
@@ -176,26 +176,26 @@
             .last { border-bottom: none; }
         }
     }
-    
+
 .actions-menu { float: left; position: relative; clear: left; width: 100%; margin: 0 0 1px 0; border: 1px solid darken(@neutral, 25%); .border-radius(4px); background: darken(@neutral, 25%); #gradient > .vertical(darken(@neutral, 15%), darken(@neutral, 25%)); list-style-type: none; .box-shadow(0 1px 0 rgba(255,255,255,.5));
     li { float: left; position: relative;
         a { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @neutral; text-shadow: 0 1px 0 rgba(000,000,000,.5);
             &:hover { text-decoration: none; #gradient > .vertical(@neutral, darken(@neutral, 40%)); }
             &.inactive { background: #CCC; color: #EEE; }
-            &.like { width: 94px; background-image: url(/images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.comment { width: 94px; background-image: url(/images/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.facebook { background-image: url(/images/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.twitter { background-image: url(/images/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
+            &.like { width: 94px; background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.comment { width: 94px; background-image: url(../images/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.facebook { background-image: url(../images/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.twitter { background-image: url(../images/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
         &.alt a { border-right: none; }
         }
 }
-    
-    
+
+
     .auth { clear: left; list-style-type: none; margin: 0; padding: 0;
         li { float: left; position: relative; margin: 0 0 4px 0; padding: 0;
             a { float: left; position: relative; display: block; padding: 6px 10px 4px 32px; .border-radius(3px); color: @neutral; .box-shadow(inset 0 1px 0 rgba(255,255,255,.2));
                 &:hover { text-decoration: none; }
-                span { position: absolute; top: 3px; left: 5px; width: 21px; height: 21px; background: url(/images/shapes.png);  }}
+                span { position: absolute; top: 3px; left: 5px; width: 21px; height: 21px; background: url(../images/shapes.png);  }}
             &.twitter a { background: #3B9FCE; #gradient > .vertical(#3B9FCE, #3183AA); border: 1px solid #2A779B; border-bottom: 2px solid #2A779B;
                 &:hover { background: #62B2D7; #gradient > .vertical(#62B2D7, #3183AA); }
                 span { background-position: 0; }}
@@ -203,21 +203,21 @@
                 &:hover { background: #8C9EC4; #gradient > .vertical(#8C9EC4, #4865A1); }
                 span { background-position: 20px; }}}
     }
-        
+
     h4.login { margin: 0 0 10px 0; padding: 0; font-size: 13px; line-height: 16px; font-weight: bold; color: @complement; }
-    
+
     #user-block { float: left; position: relative; clear: left; margin: 10px 0 15px 0; padding: 0 0 15px 0; border-bottom: 2px solid darken(@neutral, 10%);
         .logged-in { width: 100px; float: left; position: relative; margin: 0 0 5px 0; }
         .avatar { float: left; position: relative; margin: 0 10px 0 0; width: 65px; height: 65px; }
         .add { display: block; clear: left; text-align: center; margin-top: 15px; margin-bottom: 8px; }
         }
-        
-        
+
+
     #comments-form {
         width: 100%;
         float: left; position: relative;
         border-bottom: 1px solid darken(@neutral, 5%);
-        
+
             .alert-message { float: left; position: relative; padding: 5px 10px 2px 10px; text-shadow: none; }
             textarea { float: left; position: relative; clear: left; width: 670px; height: 60px; }
             .btn { float: right; position: relative; clear: left; margin: 10px 0 5px 0; }
@@ -226,7 +226,7 @@
             .logged-out { width: 660px;
                 p { float: left; position: relative; margin: 7px 0 0 0; }}
     }
-    
+
     .more {
         width: 680px;
         float: left; position: relative;
@@ -236,13 +236,13 @@
         border: none;
         border-top: 1px dotted darken(@neutral, 10%);
     }
-    
+
     #entry-meta {
         width: 100%; float:  left; position: relative; margin: 0 0 10px 0; padding: 5px 0 5px 0; border-top: 1px dotted darken(@neutral, 15%); border-bottom: 1px dotted darken(@neutral, 15%);
         img.avatar { float: left; position: relative; margin: 0 8px 0 0; }
         .author { float: left; position: relative; margin: 5px 0 0 0; color: darken(@neutral, 40%); }
     }
-    
+
     #entry-detail {
         width: 100%;
         float:  left;
@@ -250,38 +250,67 @@
         clear: left;
         margin-bottom: 10px;
     }
-    
-    #new-entry { 
+
+    #new-entry {
         .clearfix { margin: 0 0 10px 0; }
         label { margin: 0 20px 0 0; }
     }
-    
+
     #share-space { position: absolute; top: 0; right: 0; background: rgba(000,000,000,.3); padding: 7px 12px 5px 12px; .box-shadow(0 1px 0 rgba(255,255,255,.2)); -webkit-border-bottom-right-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-radius-bottomright: 3px; -moz-border-radius-bottomleft: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;
         .share-text { float: left; position: relative; margin: 3px 15px 0 0; color: @neutral; }
         .buttons { float: left; position: relative; list-style-type: none; margin: 0;
             li { float: left; position: relative; margin: 0; padding: 0; border: none; }
         }
     }
-    
-    
-    // Countdown timer
-    
-    #t7_timer {
-    width: 270px;
-    position: absolute;
-    right: 0;
-    top: 60px;
-    background-color: #1a1d24;
-    background-image: -moz-linear-gradient(top, #2b303b, #1a1d24);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2b303b), color-stop(1, #1a1d24));
-    padding: 10px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.9);
-    -moz-box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.9);
-    box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.9); }
-    #t7_timer #t7_vals .t7_numbs {
+
+
+.countdown-text {
+  width: 100%;
+  float: left;
+  position: relative;
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+div#timer {
+  padding: 10px;
+  background: darken(@baseColor, 10%);
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  .border-radius(4px);
+  .box-shadow(0 1px 0 rgba(255,255,255,.2));
+  color: lighten(@baseColor, 25%);
+  width: 270px; height: 91px;
+  position: absolute;
+  top: 18px; right: -5px;
+}
+
+time#expires-at {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  background-color: #1a1d24;
+  background-image: -moz-linear-gradient(top, #2b303b, #1a1d24);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2b303b), color-stop(1, #1a1d24));
+  padding: 10px;
+  .border-radius(6px);
+  .box-shadow(inset 0px 0px 7px rgba(0, 0, 0, 0.9));
+  width: auto;
+  margin: 5px auto;
+  .clearfix;
+  overflow: hidden;
+
+  span.countdown_row {
+    display: block;
+    height: 43px;
+    overflow: hidden;
+
+    span.countdown_section {
+      display: block;
+      float: left;
+      color: #eee;
+
+      span.countdown_amount {
         position: relative;
         float: left;
         letter-spacing: 4px;
@@ -292,46 +321,28 @@
         color: #dddddd;
         font-family: monospace;
         margin-right: 3px;
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-        -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
-        -moz-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
-        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+        .border-radius(4px);
+        .box-shadow(0px 1px 4px rgba(0, 0, 0, 0.6));
         background-image: -moz-linear-gradient(top, #383838, black);
         background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #383838), color-stop(1, black));
-        text-shadow: 0 -1px 1px black; }
-        #t7_timer #t7_vals .t7_numbs span {
-        width: 100%;
-        height: 2px;
-        top: 19px;
-        left: 0;
-        position: absolute;
-        background: #111111;
-        border-top: 1px solid rgba(0, 0, 0, 0.6);
-        height: 1px; }
-    
-    #header #t7_timer {
-    padding: 10px;
-    background: darken(@baseColor, 10%);
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    .border-radius(4px);
-    .box-shadow(0 1px 0 rgba(255,255,255,.2));
-    margin-top: -25px;
-    margin-right: -5px;
-    color: lighten(@baseColor, 25%);
+        text-shadow: 0 -1px 1px black;
+        min-width: 44px;
+        text-align: center;
+        margin-bottom: 5px;
+      }
     }
-    
-    .countdown-text { width: 100%; float: left; position: relative; margin: 0 0 5px 0; text-align: center; }
-    
-    
-    
+  }
+
+
+}
+
+
+
     .btn {
         #gradient > .vertical-three-colors(#ffffff, #ffffff, 25%, darken(#ffffff, 10%));
         &.primary { #gradient > .vertical-three-colors(@complement, @complement, 25%, darken(@complement, 10%)); }
     }
-    
+
     h3.description {
         width: 668x;
         margin:  0 0 20px 0;
@@ -345,8 +356,8 @@
         background-color: #f5f5f5;
         box-shadow: 0 1px 0 rgba(255,255,255,.5);
     }
-    
-    
+
+
     .home #user-block {
         margin-bottom: 0;
         padding-bottom: 0;
@@ -362,7 +373,7 @@
 
 
 .alert-message.tip { width: 158px; float: left; position: relative; margin-bottom: 6px; padding: 8px 10px 8px 10px; z-index: 999; .close { color: #000; }
-    i { width: 17px; height: 10px; background: url(/images/alert-point.png) no-repeat; display: block; position: absolute; left: 8px; bottom: -10px; }}
+    i { width: 17px; height: 10px; background: url(../images/alert-point.png) no-repeat; display: block; position: absolute; left: 8px; bottom: -10px; }}
 .alert-message.tip p { font-size: 12px; line-height: 14px; color: @gray; }
 
 .widget.share .buttons {
@@ -371,7 +382,7 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    li { float: left; position: relative; 
+    li { float: left; position: relative;
         &.twitter { width: 105px; }
         &.facebook { width: 75px; }}
 }
@@ -409,12 +420,12 @@ form {
     box-shadow: 0 1px 0 rgba(255,255,255,.5);
     form { float: left; position: relative; }
     input { margin-bottom: 10px; }
-    
+
             h3 { width: 660px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(@baseColor, darken(@baseColor, 20%)); margin: -19px 0 15px -19px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px;
         }
-        
+
         fieldset { margin: 0; padding: 0; }
-    
+
 }
 
 .container {

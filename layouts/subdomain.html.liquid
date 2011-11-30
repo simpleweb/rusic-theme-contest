@@ -1,30 +1,39 @@
-{% assign asset_url="http://localhost:8080" %}
+{% if env == "development" %}
+  {% assign asset_url="http://localhost:8080" %}
+{% else %}
+  {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
+{% endif %}
 <!doctype html>
     <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
     <!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
     <!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
     <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-    
+
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>{% if idea %}{{idea.title}} &middot; {{rusic.title}}{% else %}{{rusic.title}}{% endif %}</title>
-    <meta name="description" content="{{rusic.summary}}">
-    
+
+    <title>
+      {% if idea %}
+        {{idea.title}} &middot; {{space.title}}
+      {% else %}
+        {{space.title}}
+      {% endif %}
+    </title>
+    <meta name="description" content="{{space.summary}}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Stylesheets -->
-    <link rel="stylesheet/less" href="/stylesheets/contest.less">
-    <script src="/javascripts/less.js"></script>
-    
+    <link rel="stylesheet" href="{{asset_url}}/stylesheets/contest.css">
+
     <!-- Scripts -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     {{ content_for_header }}
     <script src="/assets/jquery.countdown.min.js"></script>
-    <script src="/javascripts/scripts.js"></script>
-    
+    <script src="{{asset_url}}/javascripts/scripts.js"></script>
+
     <!-- Fav & touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -34,41 +43,44 @@
 </head>
 
     <body class="home">
-    
+
     <!-- Header -->
     <header id="header">
         <div class="container">
-            <h1><a href="{{rusic.permalink}}" title="link to Social Space">{{space.title}}</a></h1>  
-            
+            <h1><a href="{{space.permalink}}" title="link to {{space.title}}">{{space.title}}</a></h1>  
             <!-- THIS NEEDS TO BE REPLACED WITH THE NEW COUNTDOWN -->
-            <div data-expires_at="2011-08-27T15:10:00Z" id="timer" class="hasCountdown"><div id="t7_timer"><span class="countdown-text">Contest closes in:</span><div id="t7_vals"><div id="t7_d" class="t7_numbs">000<span></span></div><div id="t7_h" class="t7_numbs">00<span></span></div><div id="t7_m" class="t7_numbs">00<span></span></div><div id="t7_s" class="t7_numbs">00<span></span></div></div></div></div>
-            
-        </div>        
+            {% if space.expires_at %}
+              <div id="timer">
+                <span class="countdown-text">Contest closes in:</span>
+                <time id="expires-at" datetime="{{space.expires_at}}">{{space.expires_at}}</time>
+              </div>
+            {% endif %}
+        </div>
     </header>
-    
+
     <div class="container">
-        
+
             {% if error %}
             <div class="alert-message error">
             {{ error }}
             </div>
             {% endif %}
-            
+
             {% if alert %}
             <div class="alert-message warning">
             {{ alert }}
             </div>
             {% endif %}
-            
+
             {% if notice %}
             <div class="alert-message success">
             {{ notice }}
             </div>
             {% endif %}
-        
+
     <!-- Sidebar -->
     <div class="row">
-        
+
         <div class="sidebar span4">
             <div class="widget">
                 <h3>Get involved</h3>
@@ -76,21 +88,21 @@
                 <div id="user-block">
                     <img src="{{current_user.image_url}}" title="Your avatar from {{user.provider}}" class="avatar" />
                     <span class="logged-in">Welcome back<br /> <strong>{{current_user.nickname}}</strong></span>
-                    <a href="/signout" title="Signout of {{rusic.title}}" class="btn">Logout</a>
+                    <a href="/auth/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
                     <a href="#" title="#" class="btn primary add  showbtn">+ Add new entry</a>
                 </div>
                 {% if idea %}
-                 {{rusic.summary | markdown}}
+                 {{space.summary | markdown}}
                 {% endif %}
                 {% else %}
                 <div id="user-block">
                     <p>to enter the contest, comment or like entries login with facebook or twitter</p>
-                    
+
                     <div class="alert-message tip">
                         <i></i>
                         <p>login with your facebook or twitter account</p>
                     </div>
-                    
+
                     <ul class="auth">
                         <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
                         <li class="facebook"><a href="/auth/facebook" class="button"><span></span>Facebook</a></li>
@@ -98,7 +110,7 @@
                 </div>
             {% endif %}
         </div>
-        
+
         <div class="widget share">
             <h3>Share this page</h3>
             <ul class="buttons">
@@ -106,22 +118,22 @@
             <li class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=126857104082710" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe></li>
             </ul>
         </div>
-        
+
         <div class="widget popular">
         <h3>Popular entries</h3>
             <ul>
-                {% for idea in rusic.most_liked_ideas limit:6 %}
+                {% for idea in space.most_liked_ideas limit:6 %}
                 <li><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.square}}" alt="thumbnail for {{idea.title}}" class="thumbnail" /></a></li>
                 {% endfor %}
             </ul>
         </div>
     </div>
-    
+
         {% if current_user %}
         <!-- Add new idea form -->
             <div id="new-entry">
-                <h3>Add a new entry to {{rusic.title}}</h3>
-                <form id="entry_form" method="post" action="{{rusic.permalink}}/ideas" class="clearfix" enctype="multipart/form-data">
+                <h3>Add a new entry to {{space.title}}</h3>
+                <form id="entry_form" method="post" action="{{space.permalink}}/ideas" class="clearfix" enctype="multipart/form-data">
                 <fieldset>
                     <div class="input"><label for="idea[title]">Entry title: </label><input class="span8" id="idea_title" name="idea[title]" type="text"></div>
                     <div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3"></textarea></div>
@@ -134,7 +146,7 @@
                 </form>
             </div>
         {% endif %}
-    
+
     {{ # This will be replace with the template content }}
     {{yield}}
 
@@ -142,10 +154,10 @@
 
     <!-- Footer -->
     <footer>
-        <p>{{rusic.title}} is powered by Rusic</p>
+        <p>{{space.title}} is powered by Rusic</p>
     </footer>
-    
+
     </div>
-    
+
     </body>
 </html>
