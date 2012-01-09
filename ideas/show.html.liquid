@@ -21,7 +21,24 @@
 
     </div>
     
+    {% if idea.interested_users != empty %}
+    <div class="interest span12">
+        <h3>People interested in this entry</h3>
+
+        <ul class="interested-people">
+          {% for user in idea.interested_users %}
+              <li>
+                <a href="{{ user.profile_url }}" title="{{ user.nickname }}'s {{ user.provider }} profile">
+                  <img src="{{ user.image_url }}" alt="{{ user.nickname }}" class="avatar" />
+                </a>
+              </li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
     <div class="comments span12">
+
         <h3>Comments</h3>
         
         <div id="comments-form">

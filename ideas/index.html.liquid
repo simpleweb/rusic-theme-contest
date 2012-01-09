@@ -1,20 +1,32 @@
+<!-- Entries -->
+    <div class="span12">
+    <h3 class="description">{{space.summary}}</h3>
+
 {% if space.ideas != empty %}
-        <!-- Entries -->
-        <div class="span12">
 
-            <h3 class="description">{{space.summary}}</h3>
+    <ul class="media-grid">
+      {% paginate space.ideas by 15 %}
+        {% for idea in paginate %}
+        <li><div class="entry"><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.medium_square}}" alt="Image for {{idea.title}}" class="thumbnail" /></a><div class="meta"><h3><a href="/entry.html">{{idea.title | truncate: 62}}</a></h3><span class="like-count">{{idea.likes}} likes</span></div></div></li>
+        {% endfor %}
+      {% endpaginate %}
+    </ul>
 
-            <ul class="media-grid">
-              {% paginate space.ideas by 15 %}
-                {% for idea in paginate %}
-                <li><div class="entry"><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.medium_square}}" alt="Image for {{idea.title}}" class="thumbnail" /></a><div class="meta"><h3><a href="/entry.html">{{idea.title | truncate: 62}}</a></h3><span class="like-count">{{idea.likes}} likes</span></div></div></li>
-                {% endfor %}
-              {% endpaginate %}
-            </ul>
+    <div class="more">
+        <a href="#" title="#" class="btn primary large">Show more entries...</a>
+    </div>
 
-            <div class="more">
-                <a href="#" title="#" class="btn primary large">Show more entries...</a>
-            </div>
+{% else %}
 
-        </div>
+    </div>
+
+    <div class="empty">
+      <h1>There aren't any entries yet!</h1>
+      {% if current_user %}
+      <p>be the first to enter by using the 'add new entry' button</p>
+      {% else %}
+      <p>login with twitter or facebook to be the first to enter</p>
+      {% endif %}
+    </div>
+
 {% endif %}

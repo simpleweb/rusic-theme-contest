@@ -446,3 +446,37 @@ footer {
 .checkarea.share {
     *width: 500px;
 }
+
+.empty { 
+        width: 665px; float: left; position: relative; margin: 0 0 0 20px;
+        padding: 15px;
+        border: 1px solid darken(@neutral, 7%);
+        border-bottom: 2px solid darken(@neutral, 20%);
+        font-size: 1.4em;
+        line-height: 1.4em;
+        color: darken(@neutral, 50%);
+        .border-radius(4px);
+        background-color: #f5f5f5;
+        box-shadow: 0 1px 0 rgba(255,255,255,.5); 
+
+        h1 { color: @gray; margin: 10px 0 5px 0; }
+
+    }
+
+.no-popular {
+    float: left; position: relative; margin-top: 15px; color: @gray;
+}
+
+.interest {
+        float: left;     position: relative;     clear: left;
+        margin: 20px 0 0 0;    padding: 19px 19px 9px 19px; *padding: 19px 1px 19px 19px;
+        background-color: #f5f5f5;
+        border: 1px solid darken(@neutral, 7%);
+        box-shadow: 0 1px 0 rgba(255,255,255,.5);
+        .border-radius(4px);
+
+        h3 { width: 100%; *width: 679px; *margin-right: 1px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+
+        .interested-people { margin: 0; padding: 0; list-style-type: none;
+        li { float: left; position: relative; margin: 0 5px 0 0; }}
+}

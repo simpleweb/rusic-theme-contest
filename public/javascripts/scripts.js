@@ -1,5 +1,7 @@
 $(document).ready(function(){
     
+    $('.alert-message.error, .alert-message.warning, .alert-message.success').delay(2000).slideUp('slow');
+
     // Add alt margins to popular widget
     $('.widget.popular ul li').filter(function(index){
     return (index%2 == 1);
