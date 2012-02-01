@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    $("#entry_form").validate();
     
     $('.alert-message.error, .alert-message.warning, .alert-message.success').delay(2000).slideUp('slow');
 

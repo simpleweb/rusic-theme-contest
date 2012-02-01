@@ -8,7 +8,11 @@
         <div id="entry-detail">{{idea.content | markdown}}</div>
         
         <ul class="actions-menu">
-            <li><a href="{{idea.like_link}}" data-method="post" class="like">Like this entry</a></li>
+            {% if idea.liked? %}
+            <li><span class="like on">Liked ({{ idea.likes }})</span></li>
+            {% else %}
+            <li><a href="{{idea.like_link}}" data-method="post" class="like">Like this ({{ idea.likes }})</a></li>
+            {% endif %}
             <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ Add comment</a></li>
         </ul>
         

@@ -1,5 +1,5 @@
 {% if env == "development" %}
-  {% assign asset_url="http://localhost:8080" %}
+  {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
 {% else %}
   {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
 {% endif %}
@@ -32,6 +32,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     {{ content_for_header }}
     <script src="/assets/jquery.countdown.min.js"></script>
+    <script src="{{asset_url}}/javascripts/jquery.validate.min.js"></script>
     <script src="{{asset_url}}/javascripts/scripts.js"></script>
 
     <!-- Fav & touch icons -->
@@ -89,7 +90,7 @@
                     <img src="{{current_user.image_url}}" title="Your avatar from {{user.provider}}" class="avatar" />
                     <span class="logged-in">Welcome back<br /> <strong>{{current_user.nickname}}</strong></span>
                     <a href="/auth/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
-                    <a href="#" title="#" class="btn primary add  showbtn">+ Add new entry</a>
+                    <a href="#" title="#" class="btn primary add showbtn">+ Add new entry</a>
                 </div>
                 {% if idea %}
                  {{space.summary | markdown}}
@@ -140,9 +141,9 @@
                 <h3>Add a new entry to {{space.title}}</h3>
                 <form id="entry_form" method="post" action="{{space.permalink}}/ideas" class="clearfix" enctype="multipart/form-data">
                 <fieldset>
-                    <div class="input"><label for="idea[title]">Entry title: </label><input class="span8" id="idea_title" name="idea[title]" type="text"></div>
-                    <div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3"></textarea></div>
-                    <div class="input"><label for="idea_images_attributes_0_file">Upload photo: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" /> </div>
+                    <div class="input"><label for="idea[title]">Entry title: </label><input class="span8 required" id="idea_title" name="idea[title]" type="text"></div>
+                    <div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3" class="required"></textarea></div>
+                    <div class="input"><label for="idea_images_attributes_0_file">Upload photo: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="required" /> </div>
                     <div class="submit-group">
                         <div class="checkarea"><input type="checkbox" name="idea[should_post_to_social]" value="1" checked />share this entry to {{current_user.provider}}?</div>
                         <input type="submit" value="Submit entry" class="btn primary submit" />

@@ -187,6 +187,7 @@
             &.facebook { background-image: url(../images/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
             &.twitter { background-image: url(../images/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
         &.alt a { border-right: none; }
+        span.like.on { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @neutral; text-shadow: 0 1px 0 rgba(000,000,000,.5); width: 94px; background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
         }
 }
 
@@ -479,4 +480,21 @@ footer {
 
         .interested-people { margin: 0; padding: 0; list-style-type: none;
         li { float: left; position: relative; margin: 0 5px 0 0; }}
+}
+
+#new-entry label.error {
+    display: block;
+    float: left;
+    position: relative;
+    clear: left;
+    width: 450px;
+    margin: -8px 0 10px 0;
+    padding: 4px;
+    text-align: left;
+    background: lighten(@red, 5%);
+    border: 1px solid @red;
+    margin-left: 150px;
+    color: white;
+    .border-radius;
+    font-size: .85em;
 }
