@@ -498,3 +498,10 @@ footer {
     .border-radius;
     font-size: .85em;
 }
+
+ .likebtn { float: left; position: relative; margin: 0 5px 0 0; padding: 8px 15px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
+ .on, &:hover { cursor: pointer; text-decoration: none; background-color: darken(@neutral, 40%); background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  }}
+
+ .like { float: left; position: relative; margin: 0 5px 0 0; padding: 8px 15px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
+    &.on { background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  } 
+ }

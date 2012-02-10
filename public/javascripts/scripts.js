@@ -26,7 +26,27 @@ $(document).ready(function(){
     
     $('.showbtn').click(function(){
     $("#new-entry ").slideToggle();
-    });
-        
-}
+    });    
+    }
+
+    // AJAX like buttons
+    // AJAXIFY LIKE BUTTONS
+    $('.likebtn').click(function(){
+
+    var button = this;
+
+    $(this).addClass('disabled');
+
+    $.post($(this).attr('the_link'), function(data) {
+      if(data.valid){
+        $(button).find(".likecount").html('('+data.likes_count+')');
+        $(button).removeClass('disabled');
+      }else{
+        alert(data.message);
+        $(button).removeClass('disabled');
+        $(button).addClass('on');
+      }
+    }, 'json');
+  });
+
 });
