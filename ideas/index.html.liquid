@@ -7,13 +7,13 @@
     <ul class="media-grid">
       {% paginate space.ideas by 15 %}
         {% for idea in paginate %}
-        <li><div class="entry"><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.medium_square}}" alt="Image for {{idea.title}}" class="thumbnail" /></a><div class="meta"><h3><a href="/entry.html">{{idea.title | truncate: 62}}</a></h3><span class="like-count">{{idea.likes}} likes</span></div></div></li>
+        <li><div class="entry"><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.medium_square}}" alt="Image for {{idea.title}}" class="thumbnail" /></a><div class="meta"><h3><a href="/entry.html">{{idea.title | truncate: 62}}</a></h3><span class="like-count">{{idea.likes}} {{ theme.likes_context }}</span></div></div></li>
         {% endfor %}
       {% endpaginate %}
     </ul>
 
     <div class="more">
-        <a href="#" title="#" class="btn primary large">Show more entries...</a>
+        <a href="#" title="#" class="btn primary large">Show more {{ theme.ideas_context }}...</a>
     </div>
 
 {% else %}
@@ -23,7 +23,7 @@
     <div class="empty">
       <h1>There aren't any entries yet!</h1>
       {% if current_user %}
-      <p>be the first to enter by using the 'add new entry' button</p>
+      <p>be the first to enter by using the 'add new {{ theme.idea_context }}' button</p>
       {% else %}
       <p>login with twitter or facebook to be the first to enter</p>
       {% endif %}

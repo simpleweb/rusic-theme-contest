@@ -183,7 +183,7 @@
             &:hover { text-decoration: none; #gradient > .vertical(@neutral, darken(@neutral, 40%)); }
             &.inactive { background: #CCC; color: #EEE; }
             &.like { width: 94px; background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
-            &.comment { width: 94px; background-image: url(../images/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; }
+            &.comment { width: 94px; background-image: url(../images/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; color: @white; }
             &.facebook { background-image: url(../images/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
             &.twitter { background-image: url(../images/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
         &.alt a { border-right: none; }
@@ -515,4 +515,18 @@ footer {
         .submit-group { float: left; position: relative; clear: left; padding: 0; }
         .btn.submit { float: right; position: relative; margin: 0; }
     }
+}
+
+.trail {
+    width: 668px;
+    margin:  0 0 10px 260px;
+    padding: 10px 15px;
+    border: 1px solid darken(@neutral, 7%);
+    border-bottom: 2px solid darken(@neutral, 20%);
+    font-size: .9em;
+    line-height: 1.4em;
+    color: darken(@neutral, 50%);
+    .border-radius(4px);
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 0 rgba(255,255,255,.5);
 }

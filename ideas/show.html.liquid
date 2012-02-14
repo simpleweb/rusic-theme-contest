@@ -9,11 +9,11 @@
         
         <ul class="actions-menu">
             {% if idea.liked? %}
-            <li><span class="like on">Liked ({{ idea.likes }})</span></li>
+            <li><span class="like on">{{ theme.like_context }} ({{ idea.likes }})</span></li>
             {% else %}
-            <li><div class="likebtn like" the_link="{{idea.like_link}}"><i class="star-empty"></i> Like <span class="likecount">({{idea.likes}})</span></div></li>
+            <li><div class="likebtn like" the_link="{{idea.like_link}}"><i class="star-empty"></i> {{ theme.like_context }} <span class="likecount">({{idea.likes}})</span></div></li>
             {% endif %}
-            <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ Add comment</a></li>
+            <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ Add {{ theme.comment_context }}</a></li>
         </ul>
         
     <!--
@@ -27,7 +27,7 @@
     
     {% if idea.interested_users != empty %}
     <div class="interest span12">
-        <h3>People interested in this entry</h3>
+        <h3>People interested in this {{ theme.idea_context }}</h3>
 
         <ul class="interested-people">
           {% for user in idea.interested_users %}
@@ -49,8 +49,8 @@
         {% if current_user %}
         <form action="{{idea.permalink}}/comments" method="post" charset="utf-8">
             <div class="input"><textarea id="comment_body" name="comment[body]"></textarea></div>
-            <input type="submit" name="submit" value="Submit comment" class="btn primary submit" />
-            <div class="checkarea share"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this comment to {{current_user.provider}}?</div>
+            <input type="submit" name="submit" value="Submit {{ theme.comment_context }}" class="btn primary submit" />
+            <div class="checkarea share"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this {{ theme.comment_context }} to {{current_user.provider}}?</div>
         </form>
         {% else %}
         <div class="alert-message block-message warning">
@@ -59,7 +59,7 @@
                     <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
                     <li class="facebook"><a href="/auth/facebook" class="button"><span></span>Facebook</a></li>
                 </ul>
-                <p><strong>to add a comment, like or add a new entry login with:</strong></p>
+                <p><strong>to add a {{ theme.comment_context }}, {{ theme.like_context }} or add a new {{ theme.idea_context }} login with:</strong></p>
             </div>
         </div>
         {% endif %}
@@ -73,7 +73,7 @@
         </ol>
         {% else %}
         <ol>
-            <li><p>Nobody has commented here yet, maybe you could be the first?</p></li>
+            <li><p>Nobody has added a {{ theme.comment_context }} yet, maybe you could be the first?</p></li>
         </ol>
         {% endif %}
     </div>

@@ -90,14 +90,14 @@
                     <img src="{{current_user.image_url}}" title="Your avatar from {{user.provider}}" class="avatar" />
                     <span class="logged-in">Welcome back<br /> <strong>{{current_user.nickname}}</strong></span>
                     <a href="/auth/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
-                    <a href="#" title="#" class="btn primary add showbtn">+ Add new entry</a>
+                    <a href="#" title="#" class="btn primary add showbtn">+ Add new {{ theme.idea_context }}</a>
                 </div>
                 {% if idea %}
                  {{space.summary | markdown}}
                 {% endif %}
                 {% else %}
                 <div id="user-block">
-                    <p>to enter the contest, comment or like entries login with facebook or twitter</p>
+                    <p>to enter the contest, {{ theme.comment_context }} or {{ theme.like_context }} {{ theme.ideas_context }} login with facebook or twitter</p>
 
                     <div class="alert-message tip">
                         <i></i>
@@ -122,7 +122,7 @@
 
         
         <div class="widget popular">
-        <h3>Popular entries</h3>
+        <h3>Popular {{ theme.ideas_context }}</h3>
             {% if space.ideas != empty %}
             <ul>
                 {% for idea in space.most_liked_ideas limit:6 %}
@@ -130,7 +130,7 @@
                 {% endfor %}
             </ul>
             {% else %}
-            <p class="no-popular">There aren't any entries yet!</p>
+            <p class="no-popular">There aren't any {{ theme.ideas_context }} yet!</p>
             {% endif %}
         </div>
     </div>
@@ -138,14 +138,14 @@
         {% if current_user %}
         <!-- Add new idea form -->
             <div id="new-entry">
-                <h3>Add a new entry to {{space.title}}</h3>
+                <h3>Add a new {{ theme.idea_context }} to {{space.title}}</h3>
                 <form id="entry_form" method="post" action="{{space.permalink}}/ideas" class="clearfix" enctype="multipart/form-data">
                 <fieldset>
-                    <div class="input"><label for="idea[title]">Entry title: </label><input class="span8 required" id="idea_title" name="idea[title]" type="text"></div>
+                    <div class="input"><label for="idea[title]">{{ theme.idea_context }} title: </label><input class="span8 required" id="idea_title" name="idea[title]" type="text"></div>
                     <div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3" class="required"></textarea></div>
-                    <div class="input"><label for="idea_images_attributes_0_file">Upload photo: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="required" /> </div>
+                    <div class="input"><label for="idea_images_attributes_0_file">Upload {{ theme.idea_context }}: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="required" /> </div>
                     <div class="submit-group">
-                        <div class="checkarea"><input type="checkbox" name="idea[should_post_to_social]" value="1" checked />share this entry to {{current_user.provider}}?</div>
+                        <div class="checkarea"><input type="checkbox" name="idea[should_post_to_social]" value="1" checked />share this {{ theme.idea_context }} to {{current_user.provider}}?</div>
                         <input type="submit" value="Submit entry" class="btn primary submit" />
                     </div>
                 </fieldset>
