@@ -4,7 +4,7 @@
     
     <div class="span5">
         <h1>{{idea.title}}</h1>
-        <div id="entry-meta"><img src="{{idea.user.image_url}}" alt="avatar for {{%idea.user%}}" width="25" height="25" class="avatar" /><span class="author">by <a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{idea.user.nickname}}</a></span>{% if idea.user.uuid == current_user.uuid %}<a href="{{idea.permalink}}/edit" title="link to edit {{idea.title}}" class="btn edit">edit {{ theme.idea_context }}</a>{% endif %}</div>
+        <div id="entry-meta"><a href="{{idea.user.profile_url}}" title="link to profile for {{idea.user.nickname}} on {{idea.user.provider}}"><img src="{{idea.user.image_url}}" alt="avatar for {{%idea.user%}}" width="25" height="25" class="avatar" /></a><span class="author">by <a href="{{idea.user.profile_url}}" title="link to profile for {{user.nickname}} on {{idea.user.provider}}">{{idea.user.nickname}}</a></span>{% if idea.user.uuid == current_user.uuid %}<a href="{{idea.permalink}}/edit" title="link to edit {{idea.title}}" class="btn edit">edit {{ theme.idea_context }}</a>{% endif %}</div>
         <div id="entry-detail">{{idea.content | markdown}}</div>
         
         <ul class="actions-menu">
@@ -15,13 +15,6 @@
             {% endif %}
             <li class="alt"><a href="#comments-form" title="link to comments for {{idea.title}}" class="comment">+ Add {{ theme.comment_context }}</a></li>
         </ul>
-        
-    <!--
-        <ul class="actions-menu">
-            <li><a href="#" title="#" class="facebook">like on facebook</a></li>
-            <li class="alt"><a href="#" title="#" class="twitter">share on twitter</a></li>
-        </ul>
-    -->
 
     </div>
     
@@ -32,8 +25,8 @@
         <ul class="interested-people">
           {% for user in idea.interested_users %}
               <li>
-                <a href="{{ user.profile_url }}" title="{{ user.nickname }}'s {{ user.provider }} profile">
-                  <img src="{{ user.image_url }}" alt="{{ user.nickname }}" class="avatar" />
+                <a href="{{ user.profile_url }}" title="link to {{ user.nickname }} on {{ user.provider }} profile">
+                <a href="{{user.profile_url}}" title="link to profile for {{user.nickname}} on {{user.provider}}"><img src="{{ user.image_url }}" alt="{{ user.nickname }}" class="avatar" /></a>
                 </a>
               </li>
           {% endfor %}
@@ -68,7 +61,7 @@
         {% if idea.comments != empty %}
         <ol>
             {% for comment in idea.comments %}
-            <li><img src="{{comment.user.image_url}}" alt="avatar for {{%comment.user.name%}}" class="avatar" /><div class="author">{{comment.created_at | date: "%b %m %Y"}} <strong><strong><a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{comment.user.nickname}}</a></strong></strong> said...</div><div class="comment">{{comment.body | markdown}}</div></li>
+            <li><a href="{{comment.user.profile_url}}" title="link to profile for {{comment.user.nickname}} on {{comment.user.provider}}"><img src="{{comment.user.image_url}}" alt="avatar for {{%comment.user.name%}}" class="avatar" /></a><div class="author">{{comment.created_at | date: "%b %m %Y"}} <strong><strong><a href="{{comment.user.profile_url}}" title="link to profile for {{comment.user.nickname}} on {{comment.user.provider}}">{{comment.user.nickname}}</a></strong></strong> said...</div><div class="comment">{{comment.body | markdown}}</div></li>
             {% endfor %}
         </ol>
         {% else %}
