@@ -4,7 +4,7 @@
     
     <div class="span5">
         <h1>{{idea.title}}</h1>
-        <div id="entry-meta"><img src="{{idea.user.image_url}}" alt="avatar for {{%idea.user%}}" width="25" height="25" class="avatar" /><span class="author">by <a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{idea.user.nickname}}</a></span></div>
+        <div id="entry-meta"><img src="{{idea.user.image_url}}" alt="avatar for {{%idea.user%}}" width="25" height="25" class="avatar" /><span class="author">by <a href="{{user.profile_url}}" title="Profile of {{user.nickname}} on {{user.provider}}">{{idea.user.nickname}}</a></span>{% if idea.user.uuid == current_user.uuid %}<a href="{{idea.permalink}}/edit" title="link to edit {{idea.title}}" class="btn edit">edit {{ theme.idea_context }}</a>{% endif %}</div>
         <div id="entry-detail">{{idea.content | markdown}}</div>
         
         <ul class="actions-menu">

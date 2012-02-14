@@ -1,0 +1,17 @@
+{% if current_user %}
+  <!-- Edit form -->
+  <div class="edit-form">
+	<h3>Editing: {{idea.title}}</h3>
+	<form id="entry_form" method="post" action="{{idea.permalink}}" class="clearfix" enctype="multipart/form-data">
+	  <input type="hidden" name="_method" value="put" />
+	  <fieldset>
+		<div class="input"><label for="idea[title]">{{ theme.idea_context | capitalize }} title: </label><input class="span8 required" id="idea_title" name="idea[title]" type="text" value="{{idea.title}}"></div>
+		<div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3" class="required">{{idea.content}}</textarea></div>
+		<div class="input"><label for="idea_images_attributes_0_file">Change {{ theme.idea_context }}: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="required" /> </div>
+		<div class="submit-group">
+		  <input type="submit" value="submit" class="btn primary submit" />
+		</div>
+	  </fieldset>
+	</form>
+  </div>
+{% endif %}

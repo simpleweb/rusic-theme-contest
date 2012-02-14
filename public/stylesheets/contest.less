@@ -242,6 +242,7 @@
         width: 100%; float:  left; position: relative; margin: 0 0 10px 0; padding: 5px 0 5px 0; border-top: 1px dotted darken(@neutral, 15%); border-bottom: 1px dotted darken(@neutral, 15%);
         img.avatar { float: left; position: relative; margin: 0 8px 0 0; }
         .author { float: left; position: relative; margin: 5px 0 0 0; color: darken(@neutral, 40%); }
+        .edit { float: right; }
     }
 
     #entry-detail {
@@ -408,7 +409,7 @@ form {
     .submit { *margin-left: 560px; }
 }
 
-#new-entry {
+#new-entry, .edit-form {
     width: 658px;
     float: left;
     position: relative;
@@ -505,3 +506,13 @@ footer {
  .like { float: left; position: relative; margin: 0 5px 0 0; padding: 8px 15px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
     &.on { background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  } 
  }
+ 
+
+.edit-form {
+    label { margin-right: 15px; }
+    #entry_form {
+        margin-top: 20px; margin-bottom: 30px;
+        .submit-group { float: left; position: relative; clear: left; padding: 0; }
+        .btn.submit { float: right; position: relative; margin: 0; }
+    }
+}
