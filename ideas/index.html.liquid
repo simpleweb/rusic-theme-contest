@@ -2,8 +2,6 @@
     <div class="span12">
     <h3 class="description">{{space.summary}}</h3>
 
-{% if space.ideas != empty %}
-
     <div id="filter-bar">
       <div id="order-by">
         Order by:
@@ -12,6 +10,8 @@
         {% if current_user %}<a href="{{space.permalink}}?filter=own" title="show my recipes" class="btn {% if filter == "own" %}active{% endif %}">mine</a>{% endif %}
       </div>
     </div>
+
+{% if space.ideas != empty %}
 
     <ul class="media-grid">
       {% paginate space.ideas by 100 %}
@@ -34,7 +34,7 @@
     <div class="empty">
       <h1>There aren't any entries yet!</h1>
       {% if current_user %}
-      <p>be the first to enter by using the 'add new {{ theme.idea_context }}' button</p>
+      <p>Add a new {{theme.idea_context}} by using the '+ add new {{ theme.idea_context }}' button</p>
       {% else %}
       <p>login with Twitter or Facebook to be the first to enter</p>
       {% endif %}
