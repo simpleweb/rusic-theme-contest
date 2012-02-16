@@ -162,8 +162,9 @@
         border: 1px solid darken(@neutral, 7%);
         box-shadow: 0 1px 0 rgba(255,255,255,.5);
         .border-radius(4px);
-
+        .alert-message { float: left; position: relative; }
         h3 { width: 100%; *width: 679px; *margin-right: 1px; display: block; top: 1px; left: 1px; background-color: #555; #gradient > .vertical(#555, #333); margin: -18px 0 10px -18px; padding: 10px 18px 10px 18px; color: @neutral; -webkit-border-top-left-radius: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-topleft: 4px; -moz-border-radius-topright: 4px; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+        .no-comments { margin-top: 10px; }
 
         .btn.add-comment { position: absolute; top: 6px; right: 15px; }
         ol {
@@ -182,12 +183,10 @@
         a { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @neutral; text-shadow: 0 1px 0 rgba(000,000,000,.5);
             &:hover { text-decoration: none; #gradient > .vertical(@neutral, darken(@neutral, 40%)); }
             &.inactive { background: #CCC; color: #EEE; }
-            &.like { width: 94px; background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
             &.comment { width: 94px; background-image: url(../images/share-comment.png); background-repeat: no-repeat; background-position: 7px 8px; color: @white; }
             &.facebook { background-image: url(../images/share-facebook.png); background-repeat: no-repeat; background-position: 7px 8px; }
             &.twitter { background-image: url(../images/share-twitter.png); background-repeat: no-repeat; background-position: 7px 8px; }}
         &.alt a { border-right: none; }
-        span.like.on { float: left; position: relative; margin: 0; padding: 8px 9px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @neutral; text-shadow: 0 1px 0 rgba(000,000,000,.5); width: 94px; background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 7px 8px; }
         }
 }
 
@@ -220,9 +219,9 @@
         border-bottom: 1px solid darken(@neutral, 5%);
 
             .alert-message { float: left; position: relative; padding: 5px 10px 2px 10px; text-shadow: none; }
-            textarea { float: left; position: relative; clear: left; width: 670px; height: 60px; }
+            textarea { float: left; position: relative; clear: left; width: 690px; height: 60px; }
             .btn { float: right; position: relative; clear: left; margin: 10px 0 5px 0; }
-            .auth { float: right; position: relative; clear: none; margin: 0 0 0 10px;
+            .auth { float: right; position: relative; clear: none; margin: 0;
                 li { float: left; position: relative; clear: none; margin: 0 5px 10px 0; }}
             .logged-out { width: 660px;
                 p { float: left; position: relative; margin: 7px 0 0 0; }}
@@ -442,7 +441,13 @@ form {
 }
 
 footer {
-    padding-bottom: 20px;
+    float: left;
+    position: relative;
+    clear: left;
+    width: 940px;
+    border-top: 1px dotted lighten(@grayLight, 5%);
+    margin: 10px 0 0 20px;
+    padding: 20px 0 20px 0;    color: @gray;
 }
 
 .checkarea.share {
@@ -488,23 +493,20 @@ footer {
     float: left;
     position: relative;
     clear: left;
-    width: 450px;
-    margin: -8px 0 10px 0;
-    padding: 4px;
+    width: 460px;
+    margin: -7px 0 10px 150px;
+    padding: 4px 0;
     text-align: left;
-    background: lighten(@red, 5%);
-    border: 1px solid @red;
-    margin-left: 150px;
-    color: white;
-    .border-radius;
+    border-top: 2px solid lighten(@red, 20%);
+    color: @red;
     font-size: .85em;
 }
 
- .likebtn { float: left; position: relative; margin: 0 5px 0 0; padding: 8px 15px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
- .on, &:hover { cursor: pointer; text-decoration: none; background-color: darken(@neutral, 40%); background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  }}
+ .likebtn { float: left; position: relative; margin: 0; padding: 8px 15px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
+ &.on, &:hover { cursor: pointer; text-decoration: none; background-color: darken(@neutral, 40%); background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  }}
 
- .like { float: left; position: relative; margin: 0 5px 0 0; padding: 8px 15px 8px 35px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
-    &.on { background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  } 
+ .like { float: left; position: relative; margin: 0; padding: 8px 15px 8px 32px; border-right: 1px solid darken(@neutral, 20%); color: @white; text-shadow: 0 1px 0 rgba(000,000,000,.5);  background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px;
+    &.on, &:hover { background-image: url(../images/share-heart-on.png); background-repeat: no-repeat; background-position: 8px 9px;  } 
  }
  
 
@@ -529,4 +531,25 @@ footer {
     .border-radius(4px);
     background-color: #f5f5f5;
     box-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.powered-by { float: right; }
+
+.logged-out {
+    .likebtn:hover {
+        background-color: transparent; background-image: url(../images/share-heart.png); background-repeat: no-repeat; background-position: 8px 9px; cursor: default;
+    }
+}
+
+#filter-bar {
+    margin: -5px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #CCC;
+    text-align: right;
+
+    #order-by { font-size: .9em; color: @gray;
+       a { margin: 0 0 0 5px; font-size: 1em; color: @gray; 
+           &.active, &:hover { color: @baseColor; }}
+    }
+    
 }

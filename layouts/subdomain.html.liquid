@@ -3,162 +3,178 @@
 {% else %}
   {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
 {% endif %}
+
 <!doctype html>
     <!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
     <!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
     <!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
     <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-<head>
+    <head>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        
+        <title>
+            {% if idea %}
+            {{idea.title}} &middot; {{space.title}}
+            {% else %}
+            {{space.title}}
+            {% endif %}
+        </title>
+        
+        <!-- Metadata -->
+        <meta name="description" content="{{space.summary}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{asset_url}}/stylesheets/contest.css">
+        
+        <!-- Scripts -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+        {{ content_for_header }}
+        <script src="/assets/jquery.countdown.min.js"></script>
+        <script src="{{asset_url}}/javascripts/jquery.validate.min.js"></script>
+        <script src="{{asset_url}}/javascripts/scripts.js"></script>
+        
+        <!-- Fav & touch icons -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    
+    </head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <body class="home {% unless current_user %}logged-out{% endunless %}">
+    
+        <!-- Header -->
+        <header id="header">
+            <div class="container">
+            
+                <h1><a href="{{space.permalink}}" title="link to {{space.title}}">{{space.title}}</a></h1> 
 
-    <title>
-      {% if idea %}
-        {{idea.title}} &middot; {{space.title}}
-      {% else %}
-        {{space.title}}
-      {% endif %}
-    </title>
-    <meta name="description" content="{{space.summary}}">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{asset_url}}/stylesheets/contest.css">
-
-    <!-- Scripts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-    {{ content_for_header }}
-    <script src="/assets/jquery.countdown.min.js"></script>
-    <script src="{{asset_url}}/javascripts/jquery.validate.min.js"></script>
-    <script src="{{asset_url}}/javascripts/scripts.js"></script>
-
-    <!-- Fav & touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-
-</head>
-
-    <body class="home">
-
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <h1><a href="{{space.permalink}}" title="link to {{space.title}}">{{space.title}}</a></h1>  
-            <!-- THIS NEEDS TO BE REPLACED WITH THE NEW COUNTDOWN -->
-            {% if space.expires_at %}
-              <div id="timer">
+                {% if space.expires_at %}
+                <!-- Countdown timer -->
+                <div id="timer">
                 <span class="countdown-text">Contest closes in:</span>
                 <time id="expires-at" datetime="{{space.expires_at}}">{{space.expires_at}}</time>
-              </div>
-            {% endif %}
-        </div>
-    </header>
-
-    <div class="container">
-
+                </div>
+                {% endif %}
+                
+            </div>
+        </header>
+    
+        <!-- Main container -->
+        <div class="container">
+        
             {% if error %}
             <div class="alert-message error">
-            {{ error }}
+                {{ error }}
             </div>
             {% endif %}
-
             {% if alert %}
             <div class="alert-message warning">
-            {{ alert }}
+                {{ alert }}
             </div>
             {% endif %}
-
             {% if notice %}
             <div class="alert-message success">
-            {{ notice }}
+                {{ notice }}
             </div>
             {% endif %}
-
-    <!-- Sidebar -->
-    <div class="row">
-
-        <div class="sidebar span4">
-            <div class="widget">
-                <h3>Get involved</h3>
-                {% if current_user %}
-                <div id="user-block">
-                    <img src="{{current_user.image_url}}" title="Your avatar from {{user.provider}}" class="avatar" />
-                    <span class="logged-in">Welcome back<br /> <strong>{{current_user.nickname}}</strong></span>
-                    <a href="/auth/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
-                    <a href="#" title="#" class="btn primary add showbtn">+ Add new {{ theme.idea_context }}</a>
-                </div>
-                {% if idea %}
-                 {{space.summary | markdown}}
-                {% endif %}
-                {% else %}
-                <div id="user-block">
-                    <p>to enter the contest, {{ theme.comment_context }} or {{ theme.like_context }} {{ theme.ideas_context }} login with facebook or twitter</p>
-
-                    <div class="alert-message tip">
-                        <i></i>
-                        <p>login with your facebook or twitter account</p>
+        
+        <!-- Sidebar -->
+        <div class="row">
+            <div class="sidebar span4">
+            
+                <div class="widget">
+                    <h3>Get involved</h3>
+                
+                    {% if current_user %}
+                    <!-- User block -->
+                    <div id="user-block">
+                        <img src="{{current_user.image_url}}" title="Your avatar from {{user.provider}}" class="avatar" />
+                        <span class="logged-in">Welcome back<br /> <strong>{{current_user.nickname}}</strong></span>
+                        <a href="/auth/signout" title="Signout of {{space.title}}" class="btn">Logout</a>
+                        <a href="#" title="#" class="btn primary add showbtn">+ Add new {{ theme.idea_context }}</a>
                     </div>
-
-                    <ul class="auth">
-                        <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
-                        <li class="facebook"><a href="/auth/facebook" class="button"><span></span>Facebook</a></li>
+                    
+                    {% if idea %}
+                        {{space.summary | markdown}}
+                    {% endif %}
+                    
+                    {% else %}
+                    <!-- Login block -->
+                    <div id="user-block">
+                        <p>To submit a new {{ theme.idea_context }}, {{ theme.comment_context }} or {{ theme.like_context }} login with Facebook or Twitter:</p>
+                        <div class="alert-message tip">
+                            <i></i>
+                            <p>login with your facebook or twitter account</p>
+                        </div>
+                        <ul class="auth">
+                            <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
+                            <li class="facebook"><a href="/auth/facebook" class="button"><span></span>Facebook</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+        
+                <!-- Share this page -->
+                <div class="widget share">
+                    <h3>Share this page</h3>
+                    <ul class="buttons">
+                        <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="RusicHQ">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></li>
+                        <li class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=126857104082710" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe></li>
                     </ul>
                 </div>
-            {% endif %}
-        </div>
 
-        <div class="widget share">
-            <h3>Share this page</h3>
-            <ul class="buttons">
-                <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="RusicHQ">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></li>
-            <li class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=126857104082710" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe></li>
-            </ul>
-        </div>
-
+                <!-- Popular entries widget -->
+                <div class="widget popular">
+                    <h3>Popular {{ theme.ideas_context }}</h3>
+                    {% if space.ideas != empty %}
+                    <ul>
+                        {% for idea in space.most_liked_ideas limit:6 %}
+                        <li><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.square}}" alt="thumbnail for {{idea.title}}" class="thumbnail" /></a></li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="no-popular">There aren't any {{ theme.ideas_context }} yet!</p>
+                    {% endif %}
+                </div>
         
-        <div class="widget popular">
-        <h3>Popular {{ theme.ideas_context }}</h3>
-            {% if space.ideas != empty %}
-            <ul>
-                {% for idea in space.most_liked_ideas limit:6 %}
-                <li><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.square}}" alt="thumbnail for {{idea.title}}" class="thumbnail" /></a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <p class="no-popular">There aren't any {{ theme.ideas_context }} yet!</p>
-            {% endif %}
-        </div>
-    </div>
-
-        {% if current_user %}
-        <!-- Add new idea form -->
+            </div>
+        
+            {% if current_user %}
+            <!-- Add new idea form -->
             <div id="new-entry">
                 <h3>Add a new {{ theme.idea_context }} to {{space.title}}</h3>
                 <form id="entry_form" method="post" action="{{space.permalink}}/ideas" class="clearfix" enctype="multipart/form-data">
-                <fieldset>
-                    <div class="input"><label for="idea[title]">{{ theme.idea_context }} title: </label><input class="span8 required" id="idea_title" name="idea[title]" type="text"></div>
-                    <div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3" class="required"></textarea></div>
-                    <div class="input"><label for="idea_images_attributes_0_file">Upload {{ theme.idea_context }}: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="required" /> </div>
-                    <div class="submit-group">
-                        <div class="checkarea"><input type="checkbox" name="idea[should_post_to_social]" value="1" checked />share this {{ theme.idea_context }} to {{current_user.provider}}?</div>
-                        <input type="submit" value="Submit entry" class="btn primary submit" />
-                    </div>
-                </fieldset>
+                    <fieldset>
+                        <div class="input"><label for="idea[title]">{{ theme.idea_context | capitalize }} title: </label><input class="span8 required" id="idea_title" name="idea[title]" type="text"></div>
+                        <div class="input"><label for="idea[content]">Detail: </label> <textarea id="idea_content" name="idea[content]" rows="3" class="required"></textarea></div>
+                        <div class="input"><label for="idea_images_attributes_0_file">Upload {{ theme.idea_context }}: </label> <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="required"  /> </div>
+                        <div class="submit-group">
+                            <div class="checkarea"><input type="checkbox" name="idea[should_post_to_social]" value="1" checked />share this {{ theme.idea_context }} to {{current_user.provider}}?</div>
+                            <input type="submit" value="Submit entry" class="btn primary submit" />
+                        </div>
+                    </fieldset>
                 </form>
             </div>
-        {% endif %}
-
-    {{ # This will be replace with the template content }}
-    {{yield}}
-
-    </div>
+            {% endif %}
+        
+            <!-- Main content -->
+            {{ # This will be replace with the template content }}
+            {{yield}}
+        
+            </div>
+            
+            <!-- Footer -->
+            <footer>
+                <a href="{{space.permalink}}.atom" title="link to RSS feed for {{space.title}}" class="rss-link">Subscribe to the RSS feed</a>
+                <span class="powered-by">{{space.title}} is Powered by <a href="http://rusic.com" title="link to Rusic">Rusic</a></span>
+            </footer>
+            
+        </div>
     
-    </div>
-
     </body>
 </html>

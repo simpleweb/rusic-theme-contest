@@ -1,3 +1,7 @@
+<div class="trail">
+    <a href="{{space.permalink}}" title="back to all entries in {{space.title}}" class="back-link">&laquo; back to all entries</a>
+</div>
+
 <div class="span12">
 
     <img src="{{idea.images.first.medium_large}}" alt="#" class="photo" />
@@ -46,7 +50,6 @@
             <div class="checkarea share"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this {{ theme.comment_context }} to {{current_user.provider}}?</div>
         </form>
         {% else %}
-        <div class="alert-message block-message warning">
             <div class="logged-out">
                 <ul class="auth">
                     <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
@@ -54,7 +57,6 @@
                 </ul>
                 <p><strong>to add a {{ theme.comment_context }}, {{ theme.like_context }} or add a new {{ theme.idea_context }} login with:</strong></p>
             </div>
-        </div>
         {% endif %}
         </div>
         
@@ -66,7 +68,7 @@
         </ol>
         {% else %}
         <ol>
-            <li><p>Nobody has added a {{ theme.comment_context }} yet, maybe you could be the first?</p></li>
+            <li><p class="no-comments">Nobody has added a {{ theme.comment_context }} yet, maybe you could be the first?</p></li>
         </ol>
         {% endif %}
     </div>

@@ -4,17 +4,28 @@
 
 {% if space.ideas != empty %}
 
+    <div id="filter-bar">
+      <div id="order-by">
+        Order by:
+        <a href="{{space.permalink}}" title="show recipes in date order" class="btn {% if filter == "own" %}{% else %}{% if sort == "likes" %}{% else %}active{% endif %}{% endif %}">date</a>
+        <a href="{{space.permalink}}?sort=likes" title="show most popular recipes first" class="btn {% if sort == "likes" %}active{% endif %}">popular</a>
+        {% if current_user %}<a href="{{space.permalink}}?filter=own" title="show my recipes" class="btn {% if filter == "own" %}active{% endif %}">mine</a>{% endif %}
+      </div>
+    </div>
+
     <ul class="media-grid">
-      {% paginate space.ideas by 15 %}
+      {% paginate space.ideas by 100 %}
         {% for idea in paginate %}
         <li><div class="entry"><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.medium_square}}" alt="Image for {{idea.title}}" class="thumbnail" /></a><div class="meta"><h3><a href="/entry.html">{{idea.title | truncate: 62}}</a></h3><span class="like-count">{{idea.likes}} {{ theme.likes_context }}</span></div></div></li>
         {% endfor %}
       {% endpaginate %}
     </ul>
-
+  
+    <!--
     <div class="more">
         <a href="#" title="#" class="btn primary large">Show more {{ theme.ideas_context }}...</a>
     </div>
+    -->
 
 {% else %}
 
@@ -25,7 +36,7 @@
       {% if current_user %}
       <p>be the first to enter by using the 'add new {{ theme.idea_context }}' button</p>
       {% else %}
-      <p>login with twitter or facebook to be the first to enter</p>
+      <p>login with Twitter or Facebook to be the first to enter</p>
       {% endif %}
     </div>
 
