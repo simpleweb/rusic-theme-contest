@@ -1,5 +1,5 @@
 {% if env == "development" %}
-  {% assign asset_url="http://rusic-contest-assets" %}
+  {% assign asset_url="http://127.0.0.1:8080/rusic-theme-contest/public" %}
 {% else %}
   {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
 {% endif %}
@@ -175,6 +175,18 @@
             </footer>
             
         </div>
+
+        {% if params.login == 'success' and current_participant and current_participant.missing_email_address? %}
+          <div class="modal-cover" id="emailCaptureModalCover">
+          <div class="modal" id="emailCaptureModal">
+            <h3>Please enter your email address:</h3>
+            <br/>
+            <form action="/participant" method="post">
+              <input type="text" name="participant[email_address]" placeholder="you@example.com"/>
+              <input type="submit" value="Submit" class="btn"/>
+            </form>
+          </div>
+        {% endif %}
     
     </body>
 </html>

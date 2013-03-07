@@ -48,6 +48,22 @@
             <div class="input"><textarea id="comment_body" name="comment[body]"></textarea></div>
             <input type="submit" name="submit" value="Submit {{ theme.comment_context }}" class="btn primary submit" />
             <div class="checkarea share"><input class="checkbox" type="checkbox" id="comment_should_post_to_social" name="comment[should_post_to_social]" value="1" checked="checked" /> share this {{ theme.comment_context }} to {{current_user.provider}}?</div>
+            <div class="checkarea share">
+                {% assign subscription = idea.subscription %}
+                {% if subscription %}
+                  {% if subscription.active? %}
+                    <p>You are already subscribed to email notifications for this thread</p>
+                  {% else %}
+                    <p>You have unsubscribed to email notifications for this thread</p>
+                  {% endif %}
+                {% else %}
+                  <label class="checkbox" style="width: auto;">
+                    <input type="checkbox" name="comment[subscribe_to_notifications]"/ > subscribe to notifications for this thread?
+                    <br/><br/>
+                  </label>
+                {% endif %}
+
+            </div>
         </form>
         {% else %}
             <div class="logged-out">
